@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organ Donation</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('https://source.unsplash.com/1600x900/?hospital,healthcare') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+    }
+
+    .logo h1 {
+      color: #e74c3c;
+      font-size: 2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #e74c3c;
+    }
+
+    .banner {
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .banner-text {
+      max-width: 600px;
+    }
+
+    .banner-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .banner-text p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .cta-button {
+      text-decoration: none;
+      padding: 15px 25px;
+      background: #e74c3c;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background: #c0392b;
+    }
+
+    .content {
+      padding: 40px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 20px;
+      border-radius: 10px;
+      text-align: center;
+      color: #000;
+    }
+
+    .content h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #cc0000;
+    }
+
+    .card-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+        color:blue;
+      }
+  
+      .card {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid #fff;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+  
+      .card:hover {
+        transform: scale(1.05);
+      }
+  
+      .card a {
+        text-decoration: none;
+        color: #117a8b;
+        display: block;
+      }
+  
+      .card i {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+  
+      .card h5 {
+        font-size: 1.2rem;
+        margin-top: 10px;
+      }  
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .footer-links a, .social-media a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover, .social-media a:hover {
+      color: #e74c3c;
+    }
+
+    .social-media {
+      margin: 10px 0;
+    }
+
+    .social-media a {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <h1><i class="fas fa-hand-holding-heart"></i> Organ Donation</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="{% url 'dochome' %}"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="{% url 'add_donor' %}"><i class="fas fa-user"></i>ADD DONOR</a></li>
+        {% comment %} <li><a href="{% url 'donor_list' %}"><i class="fas fa-lungs"></i>VIEW DONOR</a></li> {% endcomment %}
+        {% comment %} <li><a href="{% url 'recipient_form' %}"><i class="fas fa-user"></i>ADD RECIPIENT</a></li> {% endcomment %}
+        {% comment %} <li><a href="{% url 'recipient_list' %}"><i class="fas fa-users"></i>VIEW RECIPIENT</a></li> {% endcomment %}
+        <li><a href="{% url 'logout' %}"><i class="fas fa-users"></i>LOG OUT</a></li>
+      </ul>
+    </nav>
+</header>
+
+  <!-- Main Banner Section -->
+  {% comment %} <section class="banner">
+    <div class="banner-text">
+      <h2>Help Save Lives with Organ Donation</h2>
+      <p>Join the cause, become a donor, or help others find a match.</p>
+      <a href="{% url 'donor_form' %}" class="cta-button"><i class="fas fa-heart"></i> Register as Donor</a>
+    </div>
+  </section> {% endcomment %}
+
+  <!-- Main Content Section -->
+  {% comment %} <section class="content" style="color:rgb(15, 1, 12);">
+    <h3>Welcome to Organ Donation</h3>
+    <p>Our mission is to connect donors with recipients and help doctors manage organ donations effectively.<br> Whether you want to donate an organ, receive one, or manage the process, we are here to help.</p>
+
+    <div class="card">
+        <a href="{% url 'recipient_list' %}">
+          <i class="fas fa-address-book"></i>
+          <h5>View Recipient</h5>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <a href="{% url 'donor_list' %}">
+      <i class="fas fa-address-book"></i>
+      <h5>View Donor</h5>
+    </a>
+  </div>
+</div>
+</div>
+
+  </section> {% endcomment %}
+
+  <!-- Footer Section -->
+  {% comment %} <footer>
+    <div class="footer-links">
+      <a href="#home"><i class="fas fa-home"></i> Home</a> | 
+      <a href="#terms"><i class="fas fa-file-contract"></i> Terms of Service</a> | 
+      <a href="#privacy"><i class="fas fa-user-shield"></i> Privacy Policy</a> | 
+      <a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a>
+    </div>
+    <div class="social-media">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>© 2025 Organ Donation. All Rights Reserved.</p>
+  </footer> {% endcomment %}
+</body>
+</html>

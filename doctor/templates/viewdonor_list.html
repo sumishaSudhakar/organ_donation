@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor List</title>
+</head>
+<body>
+    <h2>Donor List</h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Blood Group</th>
+            <th>Organ TYPE</th>
+        </tr>
+        {% for donor in donors %}
+        <tr>
+            <td>{{ donor.name }}</td>
+            <td>{{ donor.blood_group.blood_group }}</td>
+            <td>{{ donor.organ.organ_name }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No donors found.</td>
+        </tr>
+        {% endfor %}
+    </table>
+          <br>
+    <a href="{% url 'dochome' %}" class="button"><i class="fas fa-plus"></i> HOME</a>
+
+</body>
+</html>

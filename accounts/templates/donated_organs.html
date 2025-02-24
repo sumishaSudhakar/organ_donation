@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donated Organs</title>
+</head>
+<body>
+    <h2>Organs Registered for Donation</h2>
+    <table border="1">
+        <tr>
+            <th>Donor Name</th>
+            <th>Organ</th>
+            <th>Blood Group</th>
+        </tr>
+        {% for donor in donors %}
+        <tr>
+            <td>{{ donor.name }}</td>
+            <td>{{ donor.organ_name.organ_name }}</td>
+            <td>{{ donor.blood_group.blood_group }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
